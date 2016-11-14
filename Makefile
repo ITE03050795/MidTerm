@@ -1,9 +1,14 @@
-Midterm: Server.c Client.c
-	gcc -o Server Server.c
-	gcc -o Client Client.c
-Server.o: Server.c
-	gcc -c Server.c
-Client.o: Client.c
-	gcc -c Client.c
+all: server01 server02 thread
+
+server01: server01.o doprocessing.o
+	gcc -o server01 server01.o doprocessing.o
+
+server02: server02.o doprocessing.o
+	gcc -o server02 server02.o doprocessing.o
+
+
+thread:	thread.o handler.o
+	gcc -o thread thread.o handler.o -l pthread
+
 clean:
-	rm *.o Midterm
+	/bin/rm -rf server01 server02 handler *.o
